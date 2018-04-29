@@ -8,14 +8,17 @@ public class MouseContoller : MonoBehaviour {
     public GameObject mouseAnchorContainer;
     public List<Transform> mouseAnchors;
     public NavMeshAgent agent;
+    public bool isWitness = false;
+    public AudioSource audioSource;
+    public AudioClip deathAudioClip;
 
     public float anchorWaitTime = 1f;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //agent.updateRotation = false;
 
+        mouseAnchors.Clear();
         foreach (Transform tr in mouseAnchorContainer.transform)
         {
             mouseAnchors.Add(tr);
@@ -24,10 +27,14 @@ public class MouseContoller : MonoBehaviour {
         StartCoroutine(FindNewAnchor());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         
+    }
+    
+    private void OnDestroy()
+    {
+        audioSource.PlayOneShot(deathAudioClip);
     }
 
     private IEnumerator FindNewAnchor()

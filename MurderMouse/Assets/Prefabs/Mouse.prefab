@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23421715027535378}
   - component: {fileID: 195325244162566634}
   - component: {fileID: 114624323772623612}
+  - component: {fileID: 65691662742606216}
   m_Layer: 8
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774531043687220}
   m_Mesh: {fileID: 4300000, guid: eacc2f4a9ecfc434aa1bffc05f9f1183, type: 3}
+--- !u!65 &65691662742606216
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774531043687220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 5, z: 8.170772}
+  m_Center: {x: -0.09108048, y: 2.5, z: -0.63913697}
 --- !u!114 &114624323772623612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +111,10 @@ MonoBehaviour:
   mouseAnchorContainer: {fileID: 0}
   mouseAnchors: []
   agent: {fileID: 195325244162566634}
-  anchorWaitTime: 1
+  isWitness: 0
+  audioSource: {fileID: 0}
+  deathAudioClip: {fileID: 8300000, guid: 0e771e38e4a1c344da74f3a769248f11, type: 3}
+  anchorWaitTime: 5
 --- !u!195 &195325244162566634
 NavMeshAgent:
   m_ObjectHideFlags: 1
