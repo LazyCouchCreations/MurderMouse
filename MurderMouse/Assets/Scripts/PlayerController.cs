@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour {
                     if(laserHit1.collider.tag == "MirroredSurface")
                     {
                         Vector3 reflectDir = Vector3.Reflect(laserRay.direction, laserHit1.normal);
+                        reflectDir.y = 0;
 
                         Ray laserRay2 = new Ray
                         {
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour {
                             if (laserHit2.collider.tag == "MirroredSurface")
                             {
                                 Vector3 reflectDir2 = Vector3.Reflect(laserRay2.direction, laserHit2.normal);
+                                reflectDir2.y = 0;
 
                                 Ray laserRay3 = new Ray
                                 {

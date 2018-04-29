@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MouseContoller : MonoBehaviour {
 
     public GameObject mouseAnchorContainer;
+    public GameObject mouseWatcher;
     public List<Transform> mouseAnchors;
     public NavMeshAgent agent;
     public bool isWitness = false;
@@ -18,11 +19,9 @@ public class MouseContoller : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
 
-        mouseAnchors.Clear();
-        foreach (Transform tr in mouseAnchorContainer.transform)
-        {
-            mouseAnchors.Add(tr);
-        }
+        mouseWatcher = transform.parent.gameObject;
+        mouseAnchors = mouseWatcher.GetComponent<MouseWatcher>().mouseAnchors;
+        audioSource = mouseWatcher.GetComponent<MouseWatcher>().audioSource;
 
         StartCoroutine(FindNewAnchor());
     }
