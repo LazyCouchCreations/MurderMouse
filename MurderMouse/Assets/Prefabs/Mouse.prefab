@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774531043687220}
-  m_Mesh: {fileID: 4300000, guid: eacc2f4a9ecfc434aa1bffc05f9f1183, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 6f52104715c0d194a9ea101caa9cc865, type: 3}
 --- !u!65 &65691662742606216
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -109,11 +109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseAnchorContainer: {fileID: 0}
+  mouseWatcher: {fileID: 0}
   mouseAnchors: []
   agent: {fileID: 195325244162566634}
   isWitness: 0
-  audioSource: {fileID: 0}
-  deathAudioClip: {fileID: 8300000, guid: 0e771e38e4a1c344da74f3a769248f11, type: 3}
+  myRating: {fileID: 0}
+  ratingDisplayTime: 2
   anchorWaitTime: 5
 --- !u!195 &195325244162566634
 NavMeshAgent:

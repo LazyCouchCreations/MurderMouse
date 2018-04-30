@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
@@ -18,12 +19,14 @@ public class PlayerController : MonoBehaviour {
     public float laserMinimumWidth = 0.01f;
     public float laserMaximumWidth = 0.75f;
     public AudioSource audioSource;
+    public AudioSource laserPopAudioSource;
     public AudioClip laserChargeAudioClip;
     public AudioClip laserFireAudioClip;
+    public AudioClip laserPop;
     public bool isLaserOnCooldown = false;
     public float laserCooldownTime = 1f;
-
     private KeyCode[] keyCodes = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8 };
+    public GameObject MainMenu; 
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour {
         {
             playerAnchors.Add(tr);
         }
+
+        MainMenu.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -51,6 +56,20 @@ public class PlayerController : MonoBehaviour {
                 {
                     Debug.Log(keyCodes[i].ToString() + " not valid");
                 }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (MainMenu.activeInHierarchy)
+            {
+                Time.timeScale = 1f;
+                MainMenu.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                MainMenu.SetActive(true);
             }
         }
 
@@ -73,9 +92,11 @@ public class PlayerController : MonoBehaviour {
         if (target.collider.tag == "Mouse")
         {
             Destroy(target.collider.gameObject);
+            laserPopAudioSource.PlayOneShot(laserPop);
         }        
     }
 
+    //player enters a player anchor
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerAnchor"))
@@ -83,7 +104,8 @@ public class PlayerController : MonoBehaviour {
             lineRenderer.enabled = true;
         }        
     }
-
+    
+    //player leaves a player anchor
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("PlayerAnchor"))
@@ -91,7 +113,8 @@ public class PlayerController : MonoBehaviour {
             lineRenderer.enabled = false;
         }
     }
-
+    
+    //player remains in player anchor, can aim and fire.
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("PlayerAnchor"))
@@ -172,6 +195,16 @@ public class PlayerController : MonoBehaviour {
                     }
                 }
             }
+
+            try
+            {
+                lastHit.transform.SendMessage("HitByRay");
+            }
+            catch
+            {
+                //do nothing
+            }
+            
 
             #region laser lerp and sound
             if (!isLaserOnCooldown)

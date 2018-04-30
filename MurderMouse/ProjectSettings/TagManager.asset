@@ -8,6 +8,7 @@ TagManager:
   - PlayerAnchor
   - MirroredSurface
   - Mouse
+  - Exit
   layers:
   - Default
   - TransparentFX

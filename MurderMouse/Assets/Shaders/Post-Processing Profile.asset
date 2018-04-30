@@ -286,20 +286,20 @@ MonoBehaviour:
       spectralTexture: {fileID: 0}
       intensity: 0.1
   grain:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      colored: 1
-      intensity: 0.389
-      size: 0.91
-      luminanceContribution: 0.725
+      colored: 0
+      intensity: 0.223
+      size: 1.02
+      luminanceContribution: 0.146
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.35222512, g: 0.33250433, b: 0.9044118, a: 1}
+      color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
-      smoothness: 0.2
+      intensity: 0.29
+      smoothness: 0.565
       roundness: 1
       mask: {fileID: 0}
       opacity: 1

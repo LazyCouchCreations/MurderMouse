@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class MouseContoller : MonoBehaviour {
@@ -9,11 +10,11 @@ public class MouseContoller : MonoBehaviour {
     public GameObject mouseWatcher;
     public List<Transform> mouseAnchors;
     public NavMeshAgent agent;
+    public Image cheeseSlider;
     public bool isWitness = false;
-    public AudioSource audioSource;
-    public AudioClip deathAudioClip;
-
-    public float anchorWaitTime = 1f;
+    public float myRating;
+    public float anchorWaitTime;
+    public float maxAnchorWaitTime = 20f;
 
     private void Start()
     {
@@ -21,19 +22,34 @@ public class MouseContoller : MonoBehaviour {
 
         mouseWatcher = transform.parent.gameObject;
         mouseAnchors = mouseWatcher.GetComponent<MouseWatcher>().mouseAnchors;
-        audioSource = mouseWatcher.GetComponent<MouseWatcher>().audioSource;
+
+        cheeseSlider = mouseWatcher.GetComponent<MouseWatcher>().cheeseSlider;
+
+        int temp = Random.Range(1, 6);
+        myRating = (temp/5f);
+
+        anchorWaitTime = maxAnchorWaitTime / temp;
 
         StartCoroutine(FindNewAnchor());
     }
 
-    private void FixedUpdate()
+    public void HitByRay()
     {
-        
+        cheeseSlider.fillAmount = myRating;
     }
-    
+
     private void OnDestroy()
     {
-        audioSource.PlayOneShot(deathAudioClip);
+        mouseWatcher.GetComponent<MouseWatcher>().mice.Remove(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Exit"))
+        {
+            mouseWatcher.GetComponent<MouseWatcher>().UpdateRatings(myRating);
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator FindNewAnchor()
