@@ -11,9 +11,11 @@ public class MouseWatcher : MonoBehaviour{
     public List<Transform> mouseAnchors;
     public Image cheeseSlider;
     public Image hotelCheeseSlider;
+    public GameObject gameOverpanel;
+    public GameObject gameController;
 
-    public int TotalRatingsCount = 1;
-    public float TotalRatingsRaw = .5f;
+    //public int TotalRatingsCount = 1;
+    //public float TotalRatingsRaw = .5f;
 
     public float spawnCooldown = 5f;
 
@@ -37,12 +39,17 @@ public class MouseWatcher : MonoBehaviour{
 
     public void UpdateRatings(float mouseRating)
     {
-        TotalRatingsCount += 1;
-        TotalRatingsRaw += mouseRating;
-        hotelCheeseSlider.fillAmount = TotalRatingsRaw / TotalRatingsCount;
+        //TotalRatingsCount += 1;
+        //TotalRatingsRaw += mouseRating;
+        //hotelCheeseSlider.fillAmount = TotalRatingsRaw / TotalRatingsCount;
     }
 
-    private IEnumerator SpawnMouse()
+    public void UpdateRatings(int mouseRating)
+    {
+        gameController.GetComponent<GameController>().UpdateHotelRating(mouseRating);
+    }
+
+        private IEnumerator SpawnMouse()
     {
         mice.Add(Instantiate(Mouse, transform));
         yield return new WaitForSeconds(spawnCooldown);

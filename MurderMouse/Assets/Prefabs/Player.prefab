@@ -150,6 +150,8 @@ MonoBehaviour:
   isLaserOnCooldown: 0
   laserCooldownTime: 1
   MainMenu: {fileID: 0}
+  gameController: {fileID: 0}
+  bloodSplat: {fileID: 1676476487282736, guid: ac2d98c1f0a59a7498cb4710e8efa1bb, type: 2}
 --- !u!120 &120816141212893326
 LineRenderer:
   m_ObjectHideFlags: 1

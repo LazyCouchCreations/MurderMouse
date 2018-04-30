@@ -13,24 +13,40 @@ public class MouseContoller : MonoBehaviour {
     public Image cheeseSlider;
     public bool isWitness = false;
     public float myRating;
+    public int intRating;
     public float anchorWaitTime;
     public float maxAnchorWaitTime = 20f;
+    public Animator animator;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         mouseWatcher = transform.parent.gameObject;
         mouseAnchors = mouseWatcher.GetComponent<MouseWatcher>().mouseAnchors;
 
         cheeseSlider = mouseWatcher.GetComponent<MouseWatcher>().cheeseSlider;
 
-        int temp = Random.Range(1, 6);
-        myRating = (temp/5f);
-
-        anchorWaitTime = maxAnchorWaitTime / temp;
+        intRating = Random.Range(1, 6);
+        myRating = (intRating/5f);
+        
+        anchorWaitTime = maxAnchorWaitTime / intRating;
 
         StartCoroutine(FindNewAnchor());
+    }
+
+    private void Update()
+    {
+        //float dist = Vector3.Distance(transform.position, agent.pathEndPosition);
+        //if (dist < 1f)
+        //{
+        //    animator.SetBool("isWalking", false);
+        //}
+        //else
+        //{
+        //    animator.SetBool("isWalking", true);
+        //}
     }
 
     public void HitByRay()
@@ -47,7 +63,7 @@ public class MouseContoller : MonoBehaviour {
     {
         if(other.CompareTag("Exit"))
         {
-            mouseWatcher.GetComponent<MouseWatcher>().UpdateRatings(myRating);
+            mouseWatcher.GetComponent<MouseWatcher>().UpdateRatings(intRating);
             Destroy(gameObject);
         }
     }

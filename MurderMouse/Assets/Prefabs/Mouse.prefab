@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 195325244162566634}
   - component: {fileID: 114624323772623612}
   - component: {fileID: 65691662742606216}
+  - component: {fileID: 95110513749957892}
   m_Layer: 8
   m_Name: Mouse
   m_TagString: Mouse
@@ -37,7 +38,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774531043687220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
@@ -97,6 +98,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 5, z: 8.170772}
   m_Center: {x: -0.09108048, y: 2.5, z: -0.63913697}
+--- !u!95 &95110513749957892
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774531043687220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 427b59769c0a011418ef94b4fa78738a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1ec9d0f2031a9c6479ce58426c18a61d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114624323772623612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,10 +130,12 @@ MonoBehaviour:
   mouseWatcher: {fileID: 0}
   mouseAnchors: []
   agent: {fileID: 195325244162566634}
+  cheeseSlider: {fileID: 0}
   isWitness: 0
-  myRating: {fileID: 0}
-  ratingDisplayTime: 2
+  myRating: 4
   anchorWaitTime: 5
+  maxAnchorWaitTime: 20
+  animator: {fileID: 0}
 --- !u!195 &195325244162566634
 NavMeshAgent:
   m_ObjectHideFlags: 1

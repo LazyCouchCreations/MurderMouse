@@ -46,7 +46,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-3b477b01eb94b85ed44ad92e81252edf Assembly-CSharp.dll:.MouseContoller
+e793dbb7f5a9f0961767c207cc054833 Assembly-CSharp.dll:.MouseContoller
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -121,7 +121,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 d78da10fc6fe2ebb0bfa7bfae15012c5 Assembly-CSharp.dll:UnityEngine.AI.NavMeshModifierVolume
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:ProGrids.pg_IgnoreSnap
-be242c0e9aebd7738f348fe5a9aa77b2 Assembly-CSharp.dll:.MouseWatcher
+fc6c6005c1db7d8e7bd8ef901e274f94 Assembly-CSharp.dll:.MouseWatcher
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -149,5 +149,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 21c9cb2cd48c7954eca3329ba4443b95 Assembly-CSharp.dll:.pg_SceneMeshRender
 f671a42aea5f34fec6a4450a3668c615 Assembly-CSharp.dll:UnityEngine.PostProcessing.PostProcessingProfile
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-61e3b0ca1d55f21944f6b4aedb9b8096 Assembly-CSharp.dll:.PlayerController
+3f6d0d45cafa59fd20ff70113cb0c53a Assembly-CSharp.dll:.PlayerController
 a71e89494a00540356e3247bc0ed0342 Assembly-CSharp.dll:UnityEngine.AI.NavMeshLink
+2f332606b836e51d93c2aa652d317cd5 Assembly-CSharp.dll:.VolumeControl
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Retry
+69c65df7084f2721cebf268b773add4f Assembly-CSharp.dll:.GameController
+eeafc51b7bd986810833be272d8584e8 Assembly-CSharp.dll:.Splat

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
@@ -26,7 +25,9 @@ public class PlayerController : MonoBehaviour {
     public bool isLaserOnCooldown = false;
     public float laserCooldownTime = 1f;
     private KeyCode[] keyCodes = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8 };
-    public GameObject MainMenu; 
+    public GameObject MainMenu;
+    public GameObject gameController;
+    public GameObject bloodSplat;
 
 	// Use this for initialization
 	void Start () {
@@ -58,21 +59,6 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (MainMenu.activeInHierarchy)
-            {
-                Time.timeScale = 1f;
-                MainMenu.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 0f;
-                MainMenu.SetActive(true);
-            }
-        }
-
     }
 
     private IEnumerator LaserReload()
@@ -91,6 +77,28 @@ public class PlayerController : MonoBehaviour {
         audioSource.PlayOneShot(laserFireAudioClip);
         if (target.collider.tag == "Mouse")
         {
+            if(target.collider.GetComponent<MouseContoller>().intRating == 5)
+            {
+                gameController.GetComponent<GameController>().UpdateHotelRating(1);
+            }
+            else if(target.collider.GetComponent<MouseContoller>().intRating == 4)
+            {
+                gameController.GetComponent<GameController>().UpdateHotelRating(2);
+            }
+            else if (target.collider.GetComponent<MouseContoller>().intRating == 3)
+            {
+                gameController.GetComponent<GameController>().UpdateScore(10);
+            }
+            else if (target.collider.GetComponent<MouseContoller>().intRating == 2)
+            {
+                gameController.GetComponent<GameController>().UpdateScore(20);
+            }
+            else if (target.collider.GetComponent<MouseContoller>().intRating == 1)
+            {
+                gameController.GetComponent<GameController>().UpdateScore(30);
+            }
+
+            Instantiate(bloodSplat, target.transform.position, Quaternion.LookRotation(gameController.transform.forward), gameController.transform);
             Destroy(target.collider.gameObject);
             laserPopAudioSource.PlayOneShot(laserPop);
         }        
